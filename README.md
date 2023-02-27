@@ -41,23 +41,26 @@ $ kubectl get services
 
 # Create the Nodes
 
-##Chrome
-kubectl create -f .\selenium-node-chrome-deployment.yaml 
+Chrome
+##
+$ kubectl create -f .\selenium-node-chrome-deployment.yaml 
 
-##Firefox
-kubectl create -f .\selenium-node-firefox-deployment.yaml 
+Firefox
+##
+$ kubectl create -f .\selenium-node-firefox-deployment.yaml 
 
-##Edge
-kubectl create -f .\selenium-node-edge-deployment.yaml 
+Edge
+##
+$ kubectl create -f .\selenium-node-edge-deployment.yaml 
 
-##Safari
-kubectl create -f .\selenium-node-safari-deployment.yaml 
+Safari
+##
+$ kubectl create -f .\selenium-node-safari-deployment.yaml 
 
 # Scaling the Grid
 We can scale by replicating nodes and have them sit idle:
 
 $ kubectl get deployments
-
 $ kubectl scale deployment selenium-node-firefox --replicas=10
 $ kubectl scale deployment selenium-node-chrome --replicas=10
 
@@ -67,20 +70,16 @@ $ kubectl autoscale deployment selenium-node-chrome --cpu-percent=50 --min=1 --m
 
 # Delete AutoScale
 $ kubectl delete hpa selenium-node-chrome
-
-
-
+##
 kubectl create ns selenium
+##
 kubectl apply -f selenium-grid-node-chrome-hpa.yaml
-
+##
 kubectl get hpa
-
-
+##
 kubectl port-forward services/selenium-hub 4444:4444
+##
 http://localhost:4444/grid/console
-
-
-
 
 # Kubernetes Dashboard :
 
