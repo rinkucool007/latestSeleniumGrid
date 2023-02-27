@@ -41,16 +41,16 @@ $ kubectl get services
 
 # Create the Nodes
 
-Chrome
+##Chrome
 kubectl create -f .\selenium-node-chrome-deployment.yaml 
 
-Firefox
+##Firefox
 kubectl create -f .\selenium-node-firefox-deployment.yaml 
 
-Edge
+##Edge
 kubectl create -f .\selenium-node-edge-deployment.yaml 
 
-Safari
+##Safari
 kubectl create -f .\selenium-node-safari-deployment.yaml 
 
 # Scaling the Grid
@@ -84,16 +84,21 @@ http://localhost:4444/grid/console
 
 # Kubernetes Dashboard :
 
+##
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+##
 kubectl apply -f dashboard-adminuser.yml
+##
 kubectl get sa admin-user -n kube-system
+##
 kubectl apply -f admin-role-binding.yml
+##
 kubectl -n kubernetes-dashboard create token admin-user
-
-eyJhbGciOiJSUzI1NiIsImtpZCI6IjJET3NGY1Z3Tl93dTAtcjYyMlFoWkEwTFRsWmJFVGlReGR3YjdtRjYxX3MifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc2NDM4NjgxLCJpYXQiOjE2NzY0MzUwODEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi11c2VyIiwidWlkIjoiMDg4ZDU2ZmMtYmVkMS00ZTVlLWIxODUtNjU2ZGFmMDA1OTc5In19LCJuYmYiOjE2NzY0MzUwODEsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbi11c2VyIn0.oZwX1ckdWFv2R4XcZwiaI9KB5Qb0KzJBqVkBA3jGPY5mgPeS2sVKJld1XLHQxO87aIWCdQ_EOxa_HZnoUP8_7VPSlV-DFthew0tTPwjgKbqEpr7ClY9aJwP3YMLRRtc7JRGLFCUuSE7KtguFKL9t7qtBFRKiWXh0yWfrE9no6cUAkpTikJRM7mLMaA7moAHdeCaT_idpmzNC4qHFkeLI8rzoaXuA4PMYdrGFetiin_vySpvI_mhZMbLzYD21OFOs4XBszVIKB1F42Sm7I9KY6lx_nliSu6Ys1w4e34YwnlLePhUstuqPt55NpARPvqjzl-GaZP6X6M9yTs6C--2KQw
-
+##
 kubectl proxy
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.
 
+##
 kubectl -n kubernetes-dashboard delete serviceaccount admin-user
+##
 kubectl -n kubernetes-dashboard delete clusterrolebinding admin-user
